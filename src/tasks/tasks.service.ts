@@ -38,4 +38,12 @@ export class TasksService {
     // this.tasks.splice(this.tasks.indexOf(found), 1);
     this.tasks = this.tasks.filter((task) => task.id !== id);
   }
+
+  updateTaskStatus(id: string, status: TaskStatus): Task {
+    const task = this.getTaskById(id);
+    task.status = status; //mind that here we are mutating the task object directly which is not a good practice
+    // In a real-world application, you might want to create a new object instead of mutating the existing one
+    // to avoid side effects and ensure immutability.
+    return task;
+  }
 }
